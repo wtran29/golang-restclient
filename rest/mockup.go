@@ -26,10 +26,12 @@ var mockServerURL *url.URL
 // Mock serves the purpose of creating Mockups.
 // All requests will be sent to the mockup server if mockup is activated.
 // To activate the mockup *environment* you have two ways: using the flag -mock
+//
 //	go test -mock
 //
 // Or by programmatically starting the mockup server
-// 	StartMockupServer()
+//
+//	StartMockupServer()
 type Mock struct {
 
 	// Request URL
@@ -97,7 +99,7 @@ func init() {
 	flag.BoolVar(&mockUpEnv, "mock", false,
 		"Use 'mock' flag to tell package rest that you would like to use mockups.")
 
-	flag.Parse()
+	// flag.Parse()
 	startMockupServ()
 }
 
@@ -115,7 +117,7 @@ func AddMockups(mocks ...*Mock) error {
 	return nil
 }
 
-//check if a string url is valid and also sort query params in order to make the url easy to compare
+// check if a string url is valid and also sort query params in order to make the url easy to compare
 func getNormalizedUrl(urlStr string) (string, error) {
 	urlObj, err := url.Parse(urlStr)
 	if err != nil {
